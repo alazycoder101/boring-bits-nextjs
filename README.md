@@ -35,12 +35,29 @@ $ storybook
 
 That's it. In the app you've got a login form, a signup form, and a protected route. You'll also find storybook running with your basic UI components. The rest - as they say - is up to you.
 
+## Docker
+Run Nextjs with:  
+
+```
+$ docker-compose build
+
+$ docker-compose up app
+```
+Post mapped from container 3000 to host 3000.
+Goto http://0.0.0.0:3000/ to see the page
+
 ## Connect to an API
 
-Authentication itself happens through an API (e.g. if you're in the market, check out this [Rails API template](https://jameschambers.co.uk/rails-api). Whatever solution you use, you'll need to add the same JWT key you use on the server to your `.env.local`. file (see below). Note that all client-side ENV variables must be prefixed with `NEXT_PUBLIC_`.
+Authentication itself happens through an API (e.g. if you're in the market, check out this [Rails API template](https://jameschambers.co.uk/rails-api). Whatever solution you use, you'll need to add the same JWT key you use on the server to your `.env.local`. file (see below). Note that all client-side ENV variables must be prefixed with `NEXT_PUBLIC_`. Please check the key in .env file
+
+start rails api server with port 3707
+```
+docker-compose up web
+```
+next local configure
 
 ```
 # .env.local
 NEXT_PUBLIC_JWT_SECRET_KEY=some-secret
-NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_API_URL=http://0.0.0.0:3707
 ```
